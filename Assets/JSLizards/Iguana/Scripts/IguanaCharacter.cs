@@ -24,7 +24,8 @@ public class IguanaCharacter : MonoBehaviour {
 		iguanaAnimator.SetTrigger("Death");
 	}
 
-	public void Rebirth(){
+	public void Rebirth()
+	{
 		iguanaAnimator.SetTrigger("Rebirth");
 	}
 
