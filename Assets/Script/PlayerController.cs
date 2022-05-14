@@ -140,9 +140,21 @@ public class PlayerController : MonoBehaviour
         isMouseDawn = false;
     }
 
-    public void MovementWithAnObject(Vector3 vec , float speed)
+    public void MovementWithAnObject(string axis , float speed, Transform TR)
     {
-        charPlayer.Move(vec * speed * Time.deltaTime);
+        if (axis == "Axis_X")
+        {
+            charPlayer.Move(TR.right * speed * Time.deltaTime);
+        }
+
+        if (axis == "Axis_Y")
+        {
+            charPlayer.Move(TR.up * speed * Time.deltaTime);
+        }
+        if (axis == "Axis_Z")
+        {
+            charPlayer.Move(TR.forward * speed * Time.deltaTime);
+        }
     }
 
 

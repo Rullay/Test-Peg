@@ -7,6 +7,7 @@ public class MoveObject : MonoBehaviour
     private string TECH_MoveType;
     private Vector3 TECH_MoveVector;
     private bool TECH_StartCoroutine;
+    private Transform TECH_TransformVec;
 
     private GameObject LinkPlayer;
     private bool ontgriger;
@@ -37,20 +38,20 @@ public class MoveObject : MonoBehaviour
             case MoveType.Axis_X:
                 TECH_MoveType = "Axis_X";
                 TECH_MoveVector = Vector3.right;
-                STATS_FromPosition = transform.position.x + STATS_FromPosition -0.01f;
+                STATS_FromPosition = transform.position.x + STATS_FromPosition ;
                 STATS_ToPosition = transform.position.x + STATS_ToPosition;
                 break;
             case MoveType.Axis_Y:
                 TECH_MoveType = "Axis_Y";
                 TECH_MoveVector = Vector3.up;
-                STATS_FromPosition = transform.position.y + STATS_FromPosition -0.01f;
+                STATS_FromPosition = transform.position.y + STATS_FromPosition ;
                 STATS_ToPosition = transform.position.y + STATS_ToPosition;
 
                 break;
             case MoveType.Axis_Z:
                 TECH_MoveType = "Axis_Z";
                 TECH_MoveVector = Vector3.forward;
-                STATS_FromPosition = transform.position.z + STATS_FromPosition -0.01f;
+                STATS_FromPosition = transform.position.z + STATS_FromPosition ;
                 STATS_ToPosition = transform.position.z + STATS_ToPosition;
                 break;
         }
@@ -66,7 +67,7 @@ public class MoveObject : MonoBehaviour
     {
         if (TECH_MoveType == "Axis_X")
         {
-            if (transform.position.x >= STATS_ToPosition || transform.position.x <= STATS_FromPosition)
+            if (transform.position.x > STATS_ToPosition || transform.position.x < STATS_FromPosition)
             {
                 if (TECH_StartCoroutine == false)
                 {
@@ -77,7 +78,7 @@ public class MoveObject : MonoBehaviour
 
         if (TECH_MoveType == "Axis_Y")
         {
-            if (transform.position.y >= STATS_ToPosition || transform.position.y <= STATS_FromPosition)
+            if (transform.position.y > STATS_ToPosition || transform.position.y < STATS_FromPosition)
             {
                 if (TECH_StartCoroutine == false)
                 {
@@ -88,7 +89,7 @@ public class MoveObject : MonoBehaviour
 
         if (TECH_MoveType == "Axis_Z")
         {
-            if (transform.position.z >= STATS_ToPosition || transform.position.z <= STATS_FromPosition)
+            if (transform.position.z > STATS_ToPosition || transform.position.z < STATS_FromPosition)
             {
                 if (TECH_StartCoroutine == false)
                 {
@@ -115,7 +116,7 @@ public class MoveObject : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerController>().MovementWithAnObject(TECH_MoveVector, STATS_MoveSpeed);
+            other.GetComponent<PlayerController>().MovementWithAnObject(TECH_MoveType, STATS_MoveSpeed, transform);
         }
     
     }

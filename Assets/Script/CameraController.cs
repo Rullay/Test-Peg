@@ -58,7 +58,7 @@ public class CameraController : MonoBehaviour
 
         if (!isButtonControlDawn)
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (/*Input.GetKey(KeyCode.Mouse0)*/ Input.GetButton("Fire1"))
             {
                 Vector3 actual_mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
                 TECH_Actual_Angle_X = -(TECH_Position_X - actual_mousePosition.x) / Screen.width;
